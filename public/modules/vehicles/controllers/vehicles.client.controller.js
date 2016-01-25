@@ -9,7 +9,12 @@ angular.module('vehicles').controller('VehiclesController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Vehicle object
 			var vehicle = new Vehicles ({
-				name: this.name
+				name: this.name,
+				type: this.type,
+				status: this.status,
+				description: this.description,
+				fuelType: this.fuelType,
+				lastInspection: this.lastInspection
 			});
 
 			// Redirect after save
@@ -18,6 +23,11 @@ angular.module('vehicles').controller('VehiclesController', ['$scope', '$statePa
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.type = '';
+				$scope.status = '';
+				$scope.description = '';
+				$scope.fuelType = '';
+				$scope.lastInspection = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
