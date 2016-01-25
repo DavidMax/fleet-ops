@@ -13,7 +13,33 @@ var VehicleSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Vehicle name',
+		required: 'Please add vehicle name',
+		trim: true
+	},
+	type: {
+		type: String,
+		default: '',
+		required: 'Please add vehicle type',
+		trim: true
+	},
+	status: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	description: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	fuelType: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	lastInspection: {
+		type: String,
+		default: '',
 		trim: true
 	},
 	created: {
