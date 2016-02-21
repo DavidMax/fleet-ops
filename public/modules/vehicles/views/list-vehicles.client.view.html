@@ -1,19 +1,23 @@
-<section data-ng-controller="VehiclesController" data-ng-init="find()">
+<section>
     <div class="page-header">
         <h1>Vehicles</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="vehicle in vehicles" data-ng-href="#!/vehicles/{{vehicle._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="vehicle.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="vehicle.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="vehicle.name"></h4>
-        </a>
+        <div class="col-sm-4" data-ng-repeat="vehicle in vehiclesCtrl.vehicles">
+            <a data-ng-href="#!/vehicles/{{vehicle._id}}" class="list-group-item">
+                <h4 class="text-center">
+                    <i class="fa fa-{{vehicle.type | lowercase}} list-vehicle-icon"></i>
+                </h4>
+                <h4>{{vehicle.name | limitTo:15}}</h4>
+                <small class="list-group-item-text text-muted">
+                    <span>Added: {{vehicle.created | date:'shortDate'}}</span>
+                    <br>
+                    <span>By: {{vehicle.user.displayName}}</span>
+                </small>
+            </a>
+        </div>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!vehicles.$resolved || vehicles.length">
+    <div class="alert alert-warning text-center" data-ng-hide="!vehiclesCtrl.vehicles.$resolved || vehiclesCtrl.vehicles.length">
         No Vehicles yet, why don't you <a href="/#!/vehicles/create">create one</a>?
     </div>
 </section>
