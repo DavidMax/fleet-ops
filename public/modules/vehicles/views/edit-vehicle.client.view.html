@@ -1,14 +1,14 @@
-<section data-ng-controller="VehiclesController" data-ng-init="findOne()">
+<section data-ng-controller="EditVehicleController as editVehiclesCtrl" data-ng-init="editVehiclesCtrl.findOne()">
     <div class="page-header">
         <h1>Edit Vehicle</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+        <form class="form-horizontal" data-ng-submit="editVehiclesCtrl.update()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="vehicle.name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="editVehiclesCtrl.currentVehicle.name" id="name" class="form-control" placeholder="Name" required>
                     </div>
                 </div>
                 <div class="form-group">

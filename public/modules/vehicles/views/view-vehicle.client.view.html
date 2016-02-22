@@ -1,21 +1,22 @@
-<section data-ng-controller="VehiclesController" data-ng-init="findOne()">
+<section data-ng-controller="ViewVehicleController as viewVehiclesCtrl" data-ng-init="viewVehiclesCtrl.findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="vehicle.name"></h1>
+		<h1 data-ng-bind="viewVehiclesCtrl.currentVehicle.name"></h1>
+		<p>{{viewVehiclesCtrl.currentVehicle}}</p>
 	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == vehicle.user._id))">
-		<a class="btn btn-primary" href="/#!/vehicles/{{vehicle._id}}/edit">
+	<div class="pull-right" data-ng-show="((viewVehiclesCtrl.authentication.user) && (viewVehiclesCtrl.authentication.user._id == viewVehiclesCtrl.currentVehicle.user._id))">
+		<a class="btn btn-primary" href="/#!/vehicles/{{viewVehiclesCtrl.currentVehicle._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
+		<a class="btn btn-primary" data-ng-click="viewVehiclesCtrl.remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
 	<small>
 		<em class="text-muted">
 			Posted on
-			<span data-ng-bind="vehicle.created | date:'mediumDate'"></span>
+			<span data-ng-bind="viewVehiclesCtrl.currentVehicle.created | date:'mediumDate'"></span>
 			by
-			<span data-ng-bind="vehicle.user.displayName"></span>
+			<span data-ng-bind="viewVehiclesCtrl.currentVehicle.user.displayName"></span>
 		</em>
 	</small>
 </section>
