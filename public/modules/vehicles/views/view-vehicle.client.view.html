@@ -1,22 +1,47 @@
 <section data-ng-controller="ViewVehicleController as viewVehiclesCtrl" data-ng-init="viewVehiclesCtrl.findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="viewVehiclesCtrl.currentVehicle.name"></h1>
-		<p>{{viewVehiclesCtrl.currentVehicle}}</p>
 	</div>
-	<div class="pull-right" data-ng-show="((viewVehiclesCtrl.authentication.user) && (viewVehiclesCtrl.authentication.user._id == viewVehiclesCtrl.currentVehicle.user._id))">
-		<a class="btn btn-primary" href="/#!/vehicles/{{viewVehiclesCtrl.currentVehicle._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="viewVehiclesCtrl.remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="viewVehiclesCtrl.currentVehicle.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="viewVehiclesCtrl.currentVehicle.user.displayName"></span>
-		</em>
-	</small>
+    <div class="col-md-12">
+	    <div class="row">
+	        <div class="col-sm-6 text-center">
+	            <i class="fa fa-{{viewVehiclesCtrl.currentVehicle.type | lowercase}} fa-5x new-vehicle-icon"></i>
+	        </div>
+
+	        <div class="col-sm-6">
+                <div class="row">
+                    <div class="pull-left" data-ng-show="((viewVehiclesCtrl.authentication.user) && (viewVehiclesCtrl.authentication.user._id == viewVehiclesCtrl.currentVehicle.user._id))">
+						<a class="btn btn-primary" href="/#!/vehicles/{{viewVehiclesCtrl.currentVehicle._id}}/edit">
+							<i class="glyphicon glyphicon-edit"></i>
+						</a>
+						<a class="btn btn-primary" data-ng-click="viewVehiclesCtrl.remove();">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+                    Name: {{viewVehiclesCtrl.currentVehicle.name}}
+	            </div>
+	            <div class="row">
+                    Type: {{viewVehiclesCtrl.currentVehicle.type}}
+	            </div>
+	            <div class="row">
+                    Status: {{viewVehiclesCtrl.currentVehicle.status}}
+	            </div>
+	            <div class="row">
+                    Description: {{viewVehiclesCtrl.currentVehicle.description}}
+	            </div>
+	            <div class="row">
+                    Fuel Type: {{viewVehiclesCtrl.currentVehicle.fuelType}}
+	            </div>
+	            <div class="row">
+					Created on
+					<span data-ng-bind="viewVehiclesCtrl.currentVehicle.created | date:'mediumDate'"></span>
+					by
+					<span data-ng-bind="viewVehiclesCtrl.currentVehicle.user.displayName"></span>
+				</div>
+	        </div>
+	    </div>
+    </div>
 </section>
